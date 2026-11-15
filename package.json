@@ -1,0 +1,6 @@
+{
+  "name": "test-personalidad",
+  "private": true,
+  "scripts": { "test": "node --test tests/*.test.cjs" },
+  "devDependencies": { "@playwright/test": "1.65.1" }
+}
