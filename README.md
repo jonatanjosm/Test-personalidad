@@ -8,7 +8,7 @@ Abre `index.html` en un navegador; funciona como archivo autónomo, sin instalar
 
 1. Pulsa **Registrar participantes**. El registro empieza con una persona.
 2. Usa **Agregar persona** o **Quitar** para ajustar el grupo (mínimo una persona). Escribe un nombre, apodo o código distinto para cada participante.
-3. Inicia la evaluación. Cada pantalla contiene **una pregunta para todas las personas**, con una escala individual de 1 a 5.
+3. Inicia la evaluación. Cada pantalla contiene **una pregunta para todas las personas**, con una escala individual de 1 a 5. Cada afirmación incluye una descripción detallada y un escenario cotidiano de ejemplo para ayudar a comprenderla.
 4. Cuando todos hayan respondido, pulsa **Siguiente pregunta**. Puedes regresar con **Anterior** sin perder respuestas.
 5. Tras la pregunta 48, consulta los resultados individuales y la comparación grupal. Puedes imprimirlos, descargar respuestas y resultados en JSON o exportar el resumen en CSV.
 

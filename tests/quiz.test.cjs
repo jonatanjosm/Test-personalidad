@@ -59,7 +59,18 @@ test('todos responden una pregunta, no se avanza con pendientes y se conservan r
 });
 test('completa 48 rondas con resultados y exportación de todas las personas',async t=>{
   const page=await pageFor(t); await register(page,2);
-  for(let q=0;q<48;q++){ await answer(page,0,5); await answer(page,1,1); await page.locator('#next').click(); }
+  const descriptions=new Set(), examples=new Set();
+  for(let q=0;q<48;q++){
+    const description=page.locator('#questiondescription'), example=page.locator('#questionexample');
+    assert.equal(await description.isVisible(),true,`Descripción visible en pregunta ${q+1}`);
+    assert.equal(await example.isVisible(),true,`Ejemplo visible en pregunta ${q+1}`);
+    const detail=await description.innerText(), scenario=await example.innerText();
+    assert.ok(detail.trim().length>80,`Descripción desarrollada en pregunta ${q+1}`);
+    assert.ok(scenario.trim().length>80,`Escenario desarrollado en pregunta ${q+1}`);
+    descriptions.add(detail); examples.add(scenario);
+    await answer(page,0,5); await answer(page,1,1); await page.locator('#next').click();
+  }
+  assert.equal(descriptions.size,48); assert.equal(examples.size,48);
   assert.equal(await page.locator('#resultlist .result').count(),2);
   assert.match(await page.locator('#results h2').first().innerText(),/2 personas/);
   assert.equal(await page.locator('#resultlist .result').first().locator('.barline').last().innerText().then(x=>x.includes('100%')),true);
